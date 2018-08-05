@@ -135,7 +135,8 @@ export default {
           date: '2016-05-07',
           name: '王小虎',
           address: '上海市普陀区金沙江路 1518 弄'
-        }]
+        }],
+        rowData: {}
     };
   },
   methods: {
@@ -145,11 +146,64 @@ export default {
     handleClose(e) {
       console.log(e);
     },
-    handleEdit(row) {
+    handleEdit(index,row) {
       console.log(row);
+      let _row = {'address':row.address,'data':row.data,'name':row.name}
+      this.rowData = _row;
+      const h = this.$createElement;
+       this.$prompt('编辑信息', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          dangerouslyUseHTMLString: true,
+          message:`<el-table
+            :data="rowData"
+            border
+            style="width: 100%;">
+            <el-table-column
+              prop="date"
+              label="日期"
+              width="180">
+            </el-table-column>
+            <el-table-column
+              prop="name"
+              label="姓名"
+              width="180">
+            </el-table-column>
+            <el-table-column
+              prop="address"
+              label="地址">
+            </el-table-column>
+            </el-table>`
+        }).then(({ value }) => {
+          this.tableData[index] = _row;
+          this.$message({
+            type: 'success',
+            message: '保存成功' 
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '取消输入'
+          });       
+        });
     },
     handleDelete(row) {
       console.log(row);
+      this.$confirm('此操作将永久删除该条信息, 是否继续?', '提示', {
+          confirmButtonText: '确定',
+          cancelButtonText: '取消',
+          type: 'warning'
+        }).then(() => {
+          this.$message({
+            type: 'success',
+            message: '删除成功!'
+          });
+        }).catch(() => {
+          this.$message({
+            type: 'info',
+            message: '已取消删除'
+          });          
+        });
     }
   }
 };
