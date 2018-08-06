@@ -3,12 +3,15 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import axios from 'axios'
 import ElementUI from './../node_modules/element-ui'
 import './../node_modules/element-ui/lib/theme-chalk/index.css'
 
 Vue.use(ElementUI)
 
 Vue.config.productionTip = false
+Vue.prototype.$axios = axios
+Vue.prototype.$host = '/activity'
 
 /* eslint-disable no-new */
 new Vue({

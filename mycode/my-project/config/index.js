@@ -10,11 +10,27 @@ module.exports = {
     // Paths
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
-    proxyTable: {},
+    proxyTable: {
+      '/activity': {
+        target: 'http://172.16.20.56:8081/activity',
+        changeOrigin: true,
+        pathRewrite: {
+		      '^/activity': ''
+        }
+      },
+      '/api':{
+        target: 'https://api.douban.com/v2/book/1220562',
+        secure: true,
+        changeOrigin: true,
+        pathRewrite: {
+          '^/api': ''
+        }
+      }
+    },
 
     // Various Dev Server settings
     host: 'localhost', // can be overwritten by process.env.HOST
-    port: 8080, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
+    port: 8084, // can be overwritten by process.env.PORT, if port is in use, a free one will be determined
     autoOpenBrowser: false,
     errorOverlay: true,
     notifyOnErrors: true,
