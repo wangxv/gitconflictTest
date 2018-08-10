@@ -1,8 +1,9 @@
 <template>
   <div class="hello">
     <el-carousel :interval="4000" type="card" height="200px">
-        <el-carousel-item v-for="(item,index) in imgs" :key="index">
-         <img :src="item.url" alt="">
+        <el-carousel-item v-for="(item,index) in 6" :key="index">
+         <!-- <img :src="item.url" alt=""> -->
+         <span>{{item}}</span>
         </el-carousel-item>
     </el-carousel>
   </div>
@@ -12,10 +13,10 @@ export default {
   name: "Item4",
   data() {
     return {
-     imgs:[{url:'../../../../static/imgs/img1.png'},{url:'../../../../static/imgs/img2.png'},
-     {url:'../../../../static/imgs/img3.jpg'},{url:'../../../../static/imgs/img4.jpg'},
-     {url:'../../../../static/imgs/img5.jpg'},{url:'../../../../static/imgs/img6.jpg'}
-     ]
+    //  imgs:[{url:'../../../../static/imgs/img1.png'},{url:'../../../../static/imgs/img2.png'},
+    //  {url:'../../../../static/imgs/img3.jpg'},{url:'../../../../static/imgs/img4.jpg'},
+    //  {url:'../../../../static/imgs/img5.jpg'},{url:'../../../../static/imgs/img6.jpg'}
+    //  ]
     };
   },
   methods: {

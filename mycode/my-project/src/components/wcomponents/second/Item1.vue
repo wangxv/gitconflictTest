@@ -3,7 +3,7 @@
     <el-row>
   <el-col :span="8" v-for="(o, index) in 2" :key="o" :offset="index > 0 ? 2 : 0">
     <el-card :body-style="{ padding: '0px' }">
-      <img src="../../../assets/1 (2).jpg" class="image">
+      <!-- <img src="../../../assets/1 (2).jpg" class="image"> -->
       <div style="padding: 14px;">
         <span>风景如画</span>
         <div class="bottom clearfix">
