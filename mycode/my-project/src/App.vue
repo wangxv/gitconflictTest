@@ -1,12 +1,21 @@
 <template>
   <div id="app">
-    <router-view/>
+    <index-vue></index-vue>
   </div>
 </template>
 
 <script>
+import indexVue from './components/wcomponents/index.vue';
 export default {
-  name: 'App'
+  name: 'App',
+  data () {
+  return {
+    msg: 'Welcome to Your Vue.js App'
+  }
+},
+components:{
+  indexVue
+}
 }
 </script>
 

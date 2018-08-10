@@ -3,7 +3,7 @@
   <el-container style="height: 500px;">
     <el-aside width="200px">
         <el-menu
-          default-active="2"
+          default-active="defaultActive"
           class="el-menu-vertical-demo"
           @open="handleOpen"
           @close="handleClose"
@@ -13,7 +13,7 @@
           <el-submenu index="1">
             <template slot="title">
               <i class="el-icon-location"></i>
-              <span>配置列表</span>
+              <span><router-link to='/goodsConfig'> 商品配置</router-link></span>
             </template>
             <el-menu-item-group>
               <template slot="title">商品配置</template>
@@ -30,15 +30,17 @@
           </el-submenu>
           <el-menu-item index="2">
             <i class="el-icon-menu"></i>
-            <span slot="title">活动列表</span>
+            <span slot="title">
+             <router-link to='/activityList'> 活动列表</router-link>
+              </span>
           </el-menu-item>
           <el-menu-item index="3" >
             <i class="el-icon-document"></i>
-            <span slot="title">商品列表</span>
+            <span slot="title"><router-link to='/goodsList'> 商品列表</router-link></span>
           </el-menu-item>
           <el-menu-item index="4">
             <i class="el-icon-setting"></i>
-            <span slot="title">用户列表</span>
+            <span slot="title" ><router-link to='/userList'> 用户列表</router-link></span>
           </el-menu-item>
         </el-menu>
     </el-aside>
@@ -61,43 +63,12 @@
               <el-button type="danger" icon="el-icon-delete" circle></el-button>
            </el-col>
         </el-row>
-         
       </el-header>
       <el-main>
-         <el-table
-            :data="tableData"
-            border
-            style="width: 100%;">
-            <el-table-column
-              prop="date"
-              label="日期"
-              width="180">
-            </el-table-column>
-            <el-table-column
-              prop="name"
-              label="姓名"
-              width="180">
-            </el-table-column>
-            <el-table-column
-              prop="address"
-              label="地址">
-            </el-table-column>
-            <el-table-column
-              label="操作">
-             <template slot-scope="scope">
-                <el-button
-                  @click="handleEdit(scope.$index, scope.row)">编辑</el-button>
-                <el-button
-                  type="danger"
-                  @click="handleDelete(scope.$index, scope.row)">删除</el-button>
-             </template>
-            </el-table-column>
-          </el-table>
+       <router-view></router-view>
       </el-main>
     </el-container>
   </el-container>
- 
-  
   </div>
 </template>
 <script>
@@ -107,36 +78,8 @@ export default {
     return {
       msg: "Welcome to Your Vue.js App",
       wtime: '',
-      tableData:  [{
-          date: '2016-05-03',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-02',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-04',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-01',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-08',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-06',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }, {
-          date: '2016-05-07',
-          name: '王小虎',
-          address: '上海市普陀区金沙江路 1518 弄'
-        }],
-        rowData: {}
+      rowData: {},
+      defaultActive:'1'
     };
   },
   methods: {
@@ -144,6 +87,9 @@ export default {
       console.log(e);
     },
     handleClose(e) {
+      console.log(e);
+    },
+    tapClick(e) {
       console.log(e);
     },
     handleEdit(index,row) {
@@ -163,41 +109,6 @@ export default {
             }).catch((err) => {
                console.log(err);
             })
-      //  this.$prompt('编辑信息', '提示', {
-      //     confirmButtonText: '确定',
-      //     cancelButtonText: '取消',
-      //     dangerouslyUseHTMLString: true,
-      //     message:`<el-table
-      //       :data="rowData"
-      //       border
-      //       style="width: 100%;">
-      //       <el-table-column
-      //         prop="date"
-      //         label="日期"
-      //         width="180">
-      //       </el-table-column>
-      //       <el-table-column
-      //         prop="name"
-      //         label="姓名"
-      //         width="180">
-      //       </el-table-column>
-      //       <el-table-column
-      //         prop="address"
-      //         label="地址">
-      //       </el-table-column>
-      //       </el-table>`
-      //   }).then(({ value }) => {
-      //     this.tableData[index] = _row;
-      //     this.$message({
-      //       type: 'success',
-      //       message: '保存成功' 
-      //     });
-      //   }).catch(() => {
-      //     this.$message({
-      //       type: 'info',
-      //       message: '取消输入'
-      //     });       
-      //   });
     },
     handleDelete(row) {
       console.log(row);
@@ -214,7 +125,7 @@ export default {
           this.$message({
             type: 'info',
             message: '已取消删除'
-          });          
+          });
         });
     }
   }
@@ -246,7 +157,7 @@ a {
     color: rgb(255, 255, 255);
     line-height: 60px;
   }
-  
+
   .el-aside {
     color: #333;
   }
