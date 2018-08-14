@@ -17,15 +17,15 @@
             </template>
             <el-menu-item-group>
               <template slot="title">商品配置</template>
-              <el-menu-item index="1-1">选项1</el-menu-item>
-              <el-menu-item index="1-2">选项2</el-menu-item>
+              <el-menu-item index="1-1"><router-link to='/goodsConfig/Item1'> 选项1</router-link></el-menu-item>
+              <el-menu-item index="1-2"><router-link to='/goodsConfig/Item2'> 选项2</router-link></el-menu-item>
             </el-menu-item-group>
             <el-menu-item-group title="分组2">
               <el-menu-item index="1-3">活动配置</el-menu-item>
             </el-menu-item-group>
             <el-submenu index="1-4">
-              <template slot="title">选项4</template>
-              <el-menu-item index="1-4-1">选项1</el-menu-item>
+              <template slot="title"><router-link to='/goodsConfig/Item3'> 选项4</router-link></template>
+              <el-menu-item index="1-4-1"><router-link to='/goodsConfig/Item4'> 选项1</router-link></el-menu-item>
             </el-submenu>
           </el-submenu>
           <el-menu-item index="2">
