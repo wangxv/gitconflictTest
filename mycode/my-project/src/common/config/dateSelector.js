@@ -1,6 +1,6 @@
-export default getMonthDay
 
-function getMonthDay(){
+
+export  function getMonthDay(){
   return [
     {
       'id':'January',
@@ -104,4 +104,12 @@ function getMonthDay(){
     },
 
   ]
+}
+
+export function getYears(minyear,maxyear){
+  let _year = [];
+ for(let i= minyear;i<=maxyear;i++){
+    _year.push(i)
+ }
+ return _year;
 }

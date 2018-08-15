@@ -2,6 +2,14 @@
   <div class="_wrap">
     <div class="item-input">
       <!-- <slot name="content"></slot> -->
+      <div class="select-year">
+        <span>请选择年份：</span>
+        <span>
+          <select @change="selectYear"  v-model="selectyear">
+            <option v-for="(year,yindex) in years" :key="yindex" :value="year" >{{year}}</option>
+          </select>
+        </span>
+      </div>
       <div><input class="_input" type="text" v-model="curTime"></div>
       <div class="_content">
         <ul v-for="(month,mindex) in data" :key="mindex">
@@ -19,7 +27,7 @@
    </div>
 </template>
 <script>
-import getMonthDay from './config/dateSelector'
+import {getMonthDay,getYears} from './config/dateSelector'
 // function date(year,month){
 //   let _date = new Date();
 //   let _year = year || _date.getFullYear();
@@ -32,11 +40,22 @@ export default {
     return {
       wtime: "",
       data:getMonthDay(),
-      curTime:null
-
+      years:getYears(1995,2020),
+      curTime:null,
+      selectyear:1995,
     }
   },
+  created(){
+
+  },
   methods:{
+    selectYear(){
+       let year = this.selectyear
+      //闰年2月29天
+      if(this.judgYear(year)){
+        this.data[1].day.push('29');
+      }
+    },
     PagTurning(index) {
       let _index = index;
       if(_index == 12){
@@ -49,8 +68,18 @@ export default {
       })
     },
     selectDay(month,item){
-      let str = month.index +'月'+ item+'日'
+      let str =this.selectyear+'年'+ month.index +'月'+ item+'日'
       this.curTime = str;
+    },
+    judgYear(year){
+      //判断闰年，可以整除4，（并且可以整出100但不可以整除400的不为闰年）
+       if(year%4 ==0){
+      if(year%100==0 && year%400 !=0){
+        return false;
+      }
+        return true;
+      }
+      return false;
     }
   }
 }
@@ -63,6 +92,20 @@ export default {
   padding:0;
   margin:0;
   /* box-sizing:border-box; */
+}
+.select-year{
+  display:flex;
+  flex-direction: row;
+  justify-content:center;
+  align-items:center;
+  width:280px;
+  height:50px;
+}
+.select-year select{
+  width:80px;
+  height:30px;
+  border-radius: 5px;
+
 }
 .item-input{
   display:flex;
