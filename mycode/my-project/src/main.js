@@ -17,15 +17,15 @@ Vue.config.productionTip = false
 Vue.prototype.$axios = axios
 Vue.prototype.$host = '/activity'
 /* eslint-disable no-new */
-// new Vue({
-//   el: '#app',
-//   router,
-//   components: { App },
-//   template: '<App/>'
-// })
 new Vue({
   el: '#app',
   router,
-  components: { dateSelector },
-  template: '<dateSelector/>'
+  components: { App },
+  template: '<App/>'
 })
+// new Vue({
+//   el: '#app',
+//   router,
+//   components: { dateSelector },
+//   template: '<dateSelector/>'
+// })
