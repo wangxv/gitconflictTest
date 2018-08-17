@@ -69,14 +69,18 @@ module.exports = {
       {
         test: require.resolve("three/examples/js/controls/OrbitControls"),
         use: "imports-loader?THREE=three"
+      },
+      {
+        test: require.resolve('zepto'),
+        loader: 'exports-loader?window.Zepto!script-loader'
       }
     ]
   },
   plugins: [
     new webpack.optimize.CommonsChunkPlugin('common.js'),
     new webpack.ProvidePlugin({
-      jQuery: "jquery",
-      $: "jquery"
+      $: "zepto",
+      zepto:"zepto"
     })
   ],
   node: {

@@ -5,9 +5,11 @@ import App from './App'
 import dateSelector from './common/dateSelector'
 import router from './router'
 import axios from 'axios'
-
+import $ from 'zepto'
 import ElementUI from './../node_modules/element-ui'
 import './../node_modules/element-ui/lib/theme-chalk/index.css'
+import '../static/js/sm'
+
 
 
 Vue.use(ElementUI)

@@ -40,11 +40,11 @@ export default{
 
   },
   mounted:function(){
-    // $(this.$el).scroller()
-    // $.attachInfiniteScroll($(this.$el))
+
+
   },
   destroyed: function(){
-    // $.detachInfiniteScroll($(this.$el))
+
   },
   watch:{
     nodata(val,oldVal){
@@ -82,10 +82,9 @@ export default{
           this.$emit('oninfinite',ev,gresolve,greject)
           promise.then(() => {
             this.loading = false
-            // $.refreshScroller($(this.$el))
+
           }).catch(() => {
             this.loading = true
-            // $.refreshScroller($(this.$el))
           })
         }
       })

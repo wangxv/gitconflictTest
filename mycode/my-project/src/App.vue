@@ -14,6 +14,7 @@
 
 <script>
 import winfinite from "./common/components/winfinite";
+
 export default {
   name: "App",
   data() {
