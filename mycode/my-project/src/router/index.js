@@ -8,6 +8,7 @@ import Item1 from '@/components/wcomponents/second/Item1'
 import Item2 from '@/components/wcomponents/second/Item2'
 import Item3 from '@/components/wcomponents/second/Item3'
 import Item4 from '@/components/wcomponents/second/Item4'
+import Tindex from '@/components/wcomponents/three/index'
 
 Vue.use(Router)
 

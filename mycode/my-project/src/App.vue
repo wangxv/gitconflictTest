@@ -1,11 +1,11 @@
 <template>
   <div id="app">
-    <index-vue></index-vue>
+   <indexVue1></indexVue1>
   </div>
 </template>
 
 <script>
-import indexVue from './components/wcomponents/index.vue';
+import indexVue1 from './components/wcomponents/three/index.vue';
 export default {
   name: 'App',
   data () {
@@ -14,7 +14,7 @@ export default {
   }
 },
 components:{
-  indexVue
+  indexVue1
 }
 }
 </script>
