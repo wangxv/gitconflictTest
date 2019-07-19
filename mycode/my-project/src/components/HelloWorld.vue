@@ -5,6 +5,7 @@
 </template>
 
 <script>
+//第二次更改
 import indexVue from './wcomponents/index.vue';
 export default {
   name: 'HelloWorld',
